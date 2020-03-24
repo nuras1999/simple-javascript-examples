@@ -1,0 +1,133 @@
+<html>
+    <head>
+        <title>
+            Calculator
+        </title>
+
+        <script>
+            function calc(val){
+                document.getElementById("inputVal").value+=val;
+            }
+
+            function solve(){
+                var res=document.getElementById("inputVal").value;
+                res=res+" = "+eval(res);
+                document.getElementById("inputVal").value=res;
+            }
+
+            function clr(){
+                document.getElementById("inputVal").value="";
+            }
+
+        </script>
+
+        <style>
+
+            .title{
+                text-align: center;
+                font-size: medium;
+                border:solid black 2px;
+                border-radius: 10px;
+                width:200px;
+                margin-top: 30px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+            }
+
+            input[type="text"]{
+                background-color:rgb(27, 27, 27);
+                color : white;    
+                height: 30px;
+                width: 190px;
+                font-size: large;
+                text-align: center;
+                margin-top: 30px;
+            }
+
+
+            /* input[type="button"]{ */
+            .input{
+                border-radius: 5px;
+                border-color: lightseagreen;
+                height: 30px;
+                width: 50px;
+                font-size: large;
+                margin-top: 30px;
+                margin-right:15px;
+
+            }
+
+            .inputOpp{
+                border-radius: 5px;
+                border-color:lime;
+                height: 30px;
+                width: 50px;
+                font-size: large;
+                text-align: center;
+                padding-top: 5px;
+                margin-top: 30px;
+                margin-right:15px;
+
+            }
+
+            #copyright{
+                text-align: center;
+                margin-top: 105px;
+                opacity : 35%;
+            }
+
+
+        </style>
+
+    </head>
+
+    <body>
+        <center>
+        <div style="border: solid black 2px; width: 300px; height: 450px; margin-top: 5%; border-radius: 20px; box-shadow: 5px 5px 20px black;">
+        <center><div class="title"><b>SIMPLE CALCULATOR</b></div></center>
+
+        <center><input type="text" id="inputVal"></center><input type="button" value="C" onclick="clr()" style="position: relative; margin-top: -29px; border-color: rgb(109, 109, 109); margin-left: 230px; height: 27px;">
+        <center>
+            <div><b>&nbsp;&nbsp;&nbsp;
+                <input type="button" value="7" class="input" onclick="calc('7')" >
+                <input type="button" value="8" class="input" onclick="calc('8')">
+                <input type="button" value="9" class="input" onclick="calc('9')">
+            </b></div>
+            
+            <div><b>&nbsp;&nbsp;&nbsp;
+                <input type="button" value="4" class="input" onclick="calc('4')">
+                <input type="button" value="5" class="input" onclick="calc('5')">
+                <input type="button" value="6" class="input" onclick="calc('6')">
+            </b></div>
+
+            <div><b>&nbsp;&nbsp;&nbsp;
+                <input type="button" value="1" class="input" onclick="calc('1')">
+                <input type="button" value="2" class="input" onclick="calc('2')">
+                <input type="button" value="3" class="input" onclick="calc('3')">
+            </b></div>
+
+            <div><b>&nbsp;&nbsp;&nbsp;
+                <input type="button" value="+" class="inputOpp" onclick="calc('+')">
+                <input type="button" value="-" class="inputOpp" onclick="calc('-')">
+                <input type="button" value="*" class="inputOpp" onclick="calc('*')">
+                <input type="button" value="/" class="inputOpp" onclick="calc('/')">
+            </b></div>
+
+            <div>
+                    <input type="button" value="Calculate" onclick="solve()" style="border-color: red; margin-top: 20px; margin-left:10px; border-radius: 4px; height: 30px; width: 130px; font-size: large; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+            </div>
+
+
+        </center>
+
+
+
+
+
+    </div></center>
+    
+    <p id="copyright">&copy &nbspAll Rights Reserved 2020 by <b>Arun</b></p>
+
+    </body>
+
+</html>

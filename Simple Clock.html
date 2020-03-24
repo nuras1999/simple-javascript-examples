@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <title>
+            CLOCK
+        </title>
+    
+    <style>
+        #title{
+            text-align: center;
+            font-size: 33px;
+            margin-top: 250px;
+            margin-left: 300px;
+            font-family: Love Ya Like A Sister;
+            }
+
+        body{
+            background-image: url("clock.jpg");
+            background-size : 1400px 670px;
+            background-repeat: no-repeat;
+        }
+
+        #clock{
+            margin-left: 650px;
+            font-family: Digital-7 Mono;
+            font-size:98px;
+        }
+
+        #quote{
+            font-size: 20px;
+            margin-left: 1020px;
+            margin-top: 140px;
+        }
+
+        #copyright{
+            text-align: center;
+            margin-top: 25px;
+            color:orange;
+        }
+
+    </style>
+    
+
+
+    <script>
+        function startClock()
+        {
+            var date = new Date();
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds(); 
+            var meridian = "AM";
+            if(hours>12)
+            {
+                meridian="PM"
+            }
+            hours = hourVal(hours);
+            minutes = minVal(minutes);
+            seconds = secVal(seconds);
+            document.getElementById("clock").innerHTML = hours + ":" + minutes + ":" + seconds + " " +meridian;
+            var t =setTimeout(startClock,1000);
+        }
+        
+
+
+        function hourVal(j)
+        {
+            if(j>12)
+            {
+                j=j-12;
+                return j;
+            }
+            else
+            {
+                return j;
+            }
+        }
+
+        function minVal(val)
+        {
+            if(val<10)
+            {
+                val="0"+val;
+                return val;
+            }
+            else
+            {
+                return val;
+            }
+        }
+
+        function secVal(i)
+        {
+            if(i<10)
+            {
+                i="0"+i;
+                return i;
+            }
+            else
+            {
+                return i;
+            }
+        }
+    </script>
+
+    </head>
+
+    <body onload="startClock()">
+        <p id="title">CURRENT&nbsp TIME &nbspIS</p>
+
+        <div id="clock"></div>
+
+        <p id="quote"><i>Time is <b>free</b>. But its <b>priceless</b>..!!</i></p>
+
+        <p id="copyright">&copy &nbspAll Rights Reserved 2020 by <b>Arun</b></p>
+
+    </body>
+
+
+</html>

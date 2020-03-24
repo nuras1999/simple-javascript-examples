@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <title>
+            Speed Typing
+        </title>
+
+        <style>
+            body{
+                background-color:rgb(15, 15, 15)
+            }
+
+            #title{
+                text-align: center;
+                color: rgb(97, 197, 255);
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 50px;
+                font-weight: bolder;
+                margin-top: 60px;
+            }
+
+            #subtitle{
+                text-align: center;
+                color: rgb(236, 248, 255);
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 20px;
+            }
+
+            #words{
+                text-align: center;
+                color: yellow;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: larger;
+                font-weight: bolder;
+                font-size: xx-large;
+                margin-top: 50px;
+                border: 2px solid white;
+                border-radius: 5px ;
+                border-style:dotted;
+                width: 270px;
+                height: 40px;
+                padding-top: 8px;
+            }
+
+            #inputVal{
+                margin-top: 40px;
+                width: 270px;
+                height: 40px;
+                border: double;
+                border-radius: 5px ;
+                text-align: center;
+                background-color: rgb(15, 15, 15);
+                color: rgb(255, 255, 68);
+                font-size: x-large;
+                font-weight: bold;
+                
+            }
+
+            #inputVal:hover{
+                box-shadow: 1px 1px 5px rgb(255, 253, 149);
+            }
+
+            #replay{
+                height: 30px;
+                background-color: rgb(41, 41, 41);
+                color: white;
+                margin-top: 40px;
+                margin-left: 645px;
+            }
+
+            #time{
+                color: rgb(226, 226, 226);
+                text-align:center;
+                margin-top: 20px;
+            }
+        </style>
+
+
+        <script>
+            var initialTimer = 40;
+            var position = 0;
+
+            function resetVal()
+            {
+                document.getElementById("words").innerHTML = "MONKEY";
+                document.getElementById("inputVal").value = "";
+	location.reload();
+            }
+
+            
+            function startTimer1()
+            {
+
+                document.getElementById("timer").innerHTML=(initialTimer--);
+                if(initialTimer==-1)
+                {
+                    clearTimeout(timeConst);
+                    alert("Number of words : " + position);
+                    resetVal();
+                    location.reload();
+                } 
+            }   
+            var timeConst = setInterval(startTimer1,1000);     
+
+            
+
+            function valPass(e)
+            {
+                var wordlist = ["MONKEY","ELEPHANT","LION","TIGER","DOG","HIPPOPOTAMUS","ZEBRA","CHEETAH","MANGOOSE","GORILLA","DONKEY","RHINOCEROUS","GIRRAFFE","KANGAROO","FOX","RABBIT","WOLF","LEOPARD","JAGUAR","BISON"];
+
+                if(e.keyCode == 13)
+                {
+
+
+                    if(document.getElementById("inputVal").value==wordlist[position])
+                    {
+                        position = position + 1;
+                        document.getElementById("words").innerText = wordlist[position];
+                        document.getElementById("inputVal").value = "";
+                        
+                    }                   
+                }
+            }
+
+        </script>
+    </head>
+
+
+    <body onload=alert("LETS_BEGIN")>
+        <div>
+            <div id="title">TYPE FAST</div>
+            <div id="subtitle">Type it as fast as you can</div>
+        </div>
+        <center><div id="words">
+            MONKEY
+        </div></center>
+        <div><center>
+            <input type="text" id="inputVal"  onkeypress="valPass(event)" onkeyup="this.value = this.value.toUpperCase();">
+        </center></div>
+        <div id="time" onload="startTimer()">
+            Time left : <b><span id="timer" >5</span></b><br><br>
+            <!-- Words left : <b><span id = "wordLeft">5</span></b> -->
+        </div>
+        <button type="button" id="replay" onclick="resetVal()">REPLAY</button>
+    </body>
+</html>

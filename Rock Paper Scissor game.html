@@ -1,0 +1,236 @@
+<html>
+    <head>
+        <title>
+            Rock-Paper-Scissors
+        </title>
+
+        <style>
+            *{
+                padding: 0%;
+                margin: 0%;
+            }
+            #title{
+                color: black;
+                text-align: center;
+                font-size: 50px;
+                padding : 12px;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: bolder;
+                background: white;
+                height : 50px;
+
+            }
+
+
+            #main{
+                color:white;
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: center;
+                border: 3px solid white;
+                width: 250px;
+                height: 60px;
+                margin: 30px auto;
+                border-radius: 4px;
+            
+            }
+
+            #user1{
+                position: absolute;
+                margin: 15px;
+                margin-left: -25px;
+                background-color: #e2584d;
+                padding: 5px;
+                border: 2px solid black;
+            }
+
+            #user2{
+                position: absolute;
+                margin: 15px;
+                margin-left: 200px;
+                background-color: #e2584d;
+                padding: 5px;
+                border: 2px solid black;
+            }
+
+            #userScore{
+                font-size: 50px;
+            }
+
+            #compScore{
+                font-size: 50px;
+            }
+
+            #r{
+                border: 2px solid black;
+                border-radius: 5px;
+                border-width: 3px;
+                width: 155px;
+                text-align: center;
+                margin-left: -260px;
+                margin-top: 50px;
+                
+            }
+
+            #r:hover{
+                border: 3px solid blanchedalmond;
+            }
+
+            #p{
+                border: 2px solid black;
+                border-radius: 5px;
+                border-width: 3px;
+                width: 155px;
+                text-align: center;
+                margin-top: -165px;
+                margin-left: 25px;
+            }
+
+            #p:hover{
+                border: 3px solid blanchedalmond;
+            }
+          
+            #s{
+                border: 2px solid black;
+                border-radius: 5px;
+                border-width: 3px;
+                width: 155px;
+                text-align: center;
+                margin-left: 310px;
+                margin-top: -165px;
+            }
+
+            #s:hover{
+                border : 3px solid blanchedalmond;
+            }
+
+
+            #result{
+                margin-top: 50px;
+                font-size: large;
+            }
+         
+
+            button{
+                margin-top: 60px;
+                margin-left: 680px;
+                height: 30px;
+                width: 60px;
+                background-color: grey;
+                color: black;
+            }
+
+
+            #copyright{
+                font-size: 12px;
+                margin-top: 20px;
+                opacity: 10%;
+            }
+
+        </style>
+
+
+
+        <script>
+            var userScore1 = 0;
+            var compScore1 = 0;
+
+           
+            function imgClicked(x){
+                if(x==r){
+                    document.getElementById("userResult").innerHTML="ROCK";
+                    var y="ROCK";
+                }
+                else if(x==p){
+                    document.getElementById("userResult").innerHTML="PAPER";
+                    var y="PAPER";
+                }
+                else{
+                    document.getElementById("userResult").innerHTML="SCISSOR";
+                    var y="SCISSOR";
+                }
+                randomVal(y)
+            }
+
+            function randomVal(y){
+
+                var arr = ["ROCK", "PAPER", "SCISSOR"];
+                var ran = Math.floor(Math.random()*3);
+                document.getElementById("compResult").innerHTML=arr[ran];
+                var z = arr[ran];
+                compareRes(y,z)
+            }
+
+            function compareRes(y,z){
+                var res = (y+z)
+             
+                if(y==z){
+                    document.getElementById("winner").innerHTML = "DRAW";
+                }
+                else if(res=="ROCKSCISSOR" || res=="PAPERROCK" || res=="SCISSORPAPER"){
+                    document.getElementById("winner").innerHTML = "WIN";
+                    userScore1+=1;
+                    document.getElementById("userScore").innerHTML = (userScore1);
+                }
+                else{
+                    document.getElementById("winner").innerHTML = "LOSE";
+                    compScore1+=1;
+                    document.getElementById("compScore").innerHTML = (compScore1);
+
+                }
+            }
+
+            function resetVal(){
+                userScore1 = 0;
+                compScore1 = 0;
+                document.getElementById("userScore").innerHTML = (userScore1);
+                document.getElementById("compScore").innerHTML = (compScore1);
+                document.getElementById("userResult").innerHTML = "";
+                document.getElementById("compResult").innerHTML = "";
+                document.getElementById("winner").innerHTML = "";
+            }
+
+
+        </script>
+
+
+    </head>
+
+    <body bgcolor = "#24272E">
+        <header id="title">
+            <p>&nbsp&nbsp&nbsp&nbsp&nbspROCK &nbsp PAPER &nbsp SCISSOR</p>
+        </header>
+
+        <div id="main">
+            <div id="scoreBoard">
+                <div id="user1">USER</div>
+                <div id="user2">COMPUTER</div>
+                <span id="userScore">0</span><b>&nbsp:&nbsp</b><span id="compScore">0</span>
+            </div>
+
+            <div class="image">
+                <div id="r">
+                    <img src="rock.jpg" onclick="imgClicked(r)"></img>
+                </div>
+                <div id="p">
+                    <img src="paper.jpg" onclick="imgClicked(p)"></img>
+                </div>
+                <div id="s">
+                    <img src="scissor.jpg" onclick="imgClicked(s)"></img>
+                </div>
+            </div>
+
+            <div id="result">
+                
+                <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUser : <span id="userResult"></span></div><br>
+                <div>Computer : <span id="compResult"></span></div><br>
+                <div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspResult : <span id="winner"></span></div>
+            </div>
+
+            <button type="button" id="button" onclick="resetVal()">RESET</button>
+
+            <p id="copyright">&copy All Rights Reserved 2020 by <b>Arun</b></p>
+
+        </div>
+        
+    </body>
+</html>

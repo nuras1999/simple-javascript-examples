@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <title>
+            Memory game
+        </title>
+
+        <script>
+
+            var ranNum = Math.floor(Math.random()*1000000000);
+
+            function reloadPage()
+            {
+                location.reload()
+                clearInterval(reloadPageTimer)
+            }
+
+            function valPass(e)
+            {
+                if(e.keyCode == 13)
+                {
+                    resultPage.style.display="block";
+                    typeAns.style.display="none";
+
+                    var inputVal = document.getElementById("inputValue").value;
+                    if(inputVal == ranNum)
+                    {
+                        document.getElementById("result").innerHTML="CORRECT";
+                        document.getElementById("userVal").innerHTML=inputVal;
+                        document.getElementById("correctVal").innerHTML=ranNum;
+
+                        var reloadPageTimer = setInterval(reloadPage,5000);                    
+                    }
+                    else
+                    {
+                        document.getElementById("result").innerHTML="WRONG";
+                        document.getElementById("userVal").innerHTML=inputVal;
+                        document.getElementById("correctVal").innerHTML=ranNum;
+
+                        setInterval(reloadPage,5000);
+                    }
+                }               
+            }
+
+            function hideVal()
+            {
+                words.style.display = "none";
+
+                typeAns.style.display = "block";
+                document.getElementById("inputValue").focus();
+
+                clearInterval(timeInt);
+            }
+
+            function begin()
+            {
+
+                document.getElementById("num").innerHTML = ranNum;
+                
+            }
+            var timeInt = setInterval(hideVal,6000)
+
+        </script>
+
+
+        <style>
+
+            .mainframe{
+                height: 300;
+                width: 400;
+                border: 1px solid black;
+                margin-left: 500px;
+                border-radius: 10px;
+                box-shadow: 1px 1px 10px black;
+                margin-top: 150px;
+            }
+
+            #yourNum,#inpYourText,#result{
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: xx-large;
+                font-weight: bold;
+                margin-top: 80px;
+            }
+
+            #num{
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: xxx-large;
+                font-weight: bolder;
+                margin-top: 20px;
+            }
+
+            #inputValue{
+                text-align: center;
+                height: 40px;
+                width:190px;
+                margin-left: 105px;
+                margin-top: 25px;
+                font-size: xx-large;
+                border-radius: 10px;
+                box-shadow: 2px 2px 2px black;
+                border-color: black;
+                font-weight: bolder;
+            }
+
+            #detailOut{
+                margin-top: 30px;
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                font-size: large;
+            }
+
+        </style>
+
+    </head>
+    
+    
+    
+    <body onload="begin()">
+        
+        <div id = "words" class="mainframe" style="display: block">
+            <div id = "yourNum">YOUR NUMBER IS </div>
+            <div id= "num" >43283673</div>
+        </div>
+        <div id = "typeAns"  class="mainframe" style="display: none">
+            <div id="inpYourText">INPUT YOUR NUMBER</div>
+            <input type="text" id = "inputValue" onkeypress="valPass(event)" >
+        </div>
+        <div id = "resultPage" class="mainframe" style="display: none;">
+            <div id = "result"><b>Wrong Input</b></div>
+            <div id = "detailOut">
+                    Inputed value : <span id = "userVal"><b>12345678</b></span><br><br>
+                    Correct value : <span id="correctVal"><b>98765432</b></span>
+            </div>
+        
+        </div>      
+    </body>
+    
+</html>

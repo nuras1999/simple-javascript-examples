@@ -1,0 +1,257 @@
+<html>
+    <head>
+        <title>
+            Who's your Valentine?
+        </title>
+
+        <style>
+
+            body
+            {
+                background-color: rgb(240, 219, 0);
+            }
+
+            #title1
+            {
+                color:white;
+                font-family: arial;
+                font-size: 80;
+                text-align: center;
+                margin-top: 80px;
+                margin-left: 0px;
+                position: fixed;
+            }
+
+            #title2
+            {
+                color: black;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 98;
+                text-align: center;
+                position: fixed; 
+                margin-top: 170px;
+                margin-left: 0px;
+            }
+
+            hr{
+                margin-top: 300px;
+                position: fixed;
+            }
+
+
+            #mainWork{
+                position: fixed;
+                margin-top: 350px;
+                margin-left: 300px;
+                font-size:xx-large;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+
+            #qwes{
+                margin-bottom: 20px;
+            }
+
+            #buttonVal{
+                height: 50px;
+                width: 160px;
+                margin-left: 300px;
+                margin-top: 10px;
+                font-weight: bolder;
+                background-color: yellow;
+                border: none;
+                color: black;
+                
+                text-align: center;
+                font-size: 18px;
+                opacity: 0.6;
+                transition: 0.3s;
+                border-radius: 50px;
+                border:2px solid black;
+            }
+
+            #buttonVal:hover{
+                opacity: 1;
+            }
+
+            
+
+            
+
+            #result{
+                margin-left: 30px;
+                margin-top: 20px;
+                background-color: red;
+                margin-right: 200px;
+                
+            }
+
+            .result{
+                display:none;
+            }
+
+
+            #restartBtn{
+                display:none;
+                
+                margin-top: -30px;
+                margin-left: 880px;
+                font-size: larger;
+                font-weight: bolder;
+
+            }
+
+
+        </style>
+
+
+        <script>
+
+            var colorVal = 0;
+            var foodVal = 0;
+            var noVal = 0;
+            var totVal = 0;
+
+            var colorRand = Math.floor((Math.random())*3);
+            var foodRand = Math.floor((Math.random())*3);
+            var noRand = Math.floor((Math.random())*5);
+
+            var defColor = ["Red","Blue","Black"];
+            var defFood = ["Pani Puri","Shawarma","Biriyani"];
+            var defNum = ["One","Two","Three","Four","Five"];
+
+            var girlsName = ["Renuka Devi","Arukkani","Varsha","Thangapushpam","Julie","Pushpa","Lincy","Loslia","Paravai Muniamma","Sheeba","kannaatha","Thangapushpam","Arukkani","Thenmozhi","Kanimozhi"]
+
+            var nameRand = Math.floor((Math.random())*14);
+
+            function restartAll()
+                {
+                    location.reload();
+                }
+
+            function alertTest() 
+            {
+                //alert(defColor[colorRand] + defFood[foodRand] + defNum[noRand]);
+                var favColorChoice = document.getElementsByName("favColor");
+                for(var i=0; i<favColorChoice.length; i++)
+                {
+                    if(favColorChoice[i].checked)
+                    {
+                        if(favColorChoice[i].value == defColor[colorRand])
+                        {
+                            
+                            colorVal += 30;
+                            alert("Same Color : " + colorVal);
+                        }
+                    }
+                }
+                
+
+                var favFoodChoice = document.getElementsByName("favFood");
+                for(var i=0; i<favFoodChoice.length; i++)
+                {
+                    if(favFoodChoice[i].checked)
+                    {
+                        if(favFoodChoice[i].value == defFood[foodRand])
+                        {
+                            foodVal += 30;
+                            alert("Same Food : " + foodVal);
+                        
+                        }
+                    }
+                }
+
+
+                var favNumberChoice = document.getElementsByName("favNo");
+                for(var i=0; i<favNumberChoice.length; i++)
+                {
+                    if(favNumberChoice[i].checked)
+                    {
+                        if(favNumberChoice[i].value == defNum[noRand])
+                        {
+                            noVal +=40;
+                            alert("Same Number : " + noVal);
+
+                        }
+                    }
+                }
+
+                document.getElementById("result").style.display = "block";
+                
+                document.getElementById("loverName").innerHTML = girlsName[nameRand];
+                
+                document.getElementById("restartBtn").style.display = "block";
+
+
+                totVal = colorVal + foodVal + noVal;
+                document.getElementById("lovePercentage").innerHTML = totVal;
+                //alert("Total value : " + totVal);
+
+                
+
+
+                
+            }
+
+        </script>
+
+
+
+
+    </head>
+
+    <body>
+        <div>
+            <h1 id="title1">WHO IS YOUR</h1>
+            <h1 id="title2">VALENTINE !?</h1>
+            <hr width=650px noshade align="left">
+
+        </div>
+
+        <div id = "mainWork">
+        <form>
+            <div id = "qwes"><b>Favourite Color &nbsp;&nbsp;&nbsp; </b>
+            <input type = "radio" id = "Red" name = "favColor" value = "Red"><label for ="Red">Red &nbsp;&nbsp;&nbsp;</lable> 
+            <input type = "radio" id = "Blue" name = "favColor" value = "Blue"><label for ="Blue">Blue &nbsp;&nbsp;&nbsp;</lable>
+            <input type = "radio" id = "Black" name = "favColor" value = "Black"><label for ="Black">Black &nbsp;&nbsp;&nbsp;</lable>
+            </div>
+
+
+
+            <div id = "qwes"><b>Favourite Food  &nbsp;&nbsp;&nbsp;&nbsp;  </b>         
+            <input type = "radio" id = "Biriyani" name = "favFood" value = "Biriyani"><label for ="Biriyani">Biriyani &nbsp;&nbsp;&nbsp;</lable>
+            <input type = "radio" id = "Pani Puri" name = "favFood" value = "Pani Puri"><label for ="Pani Puri">Pani Puri &nbsp;&nbsp;&nbsp;</lable> 
+            <input type = "radio" id = "Shawarma" name = "favFood" value = "Shawarma"><label for ="Shawarma">Shawarma &nbsp;&nbsp;&nbsp;</lable>                                   
+            </div>
+
+
+
+            <div id = "qwes"><b>Favourite Number</b>
+            <input type = "radio" id = "One" name = "favNo" value = "One"><label for ="One">1 &nbsp;&nbsp;&nbsp;</lable> 
+            <input type = "radio" id = "Two" name = "favNo" value = "Two"><label for ="Two">2 &nbsp;&nbsp;&nbsp;</lable> 
+            <input type = "radio" id = "Three" name = "favNo" value = "Three"><label for ="Three">3 &nbsp;&nbsp;&nbsp;</lable> 
+            <input type = "radio" id = "Four" name = "favNo" value = "Four"><label for ="Four">4 &nbsp;&nbsp;&nbsp;</lable> 
+            <input type = "radio" id = "Five" name = "favNo" value = "Five"><label for ="Five">5 &nbsp;&nbsp;&nbsp;</lable>            
+            </div>
+
+            <div>
+            <button type = "button" onclick="alertTest()" id = "buttonVal">FIND MATCH</button>
+            </div>
+
+            <div id = "result" class = "result">
+                <b><span id = "loverName">Arukani</span></b> loves you. You both have <b><span id = "lovePercentage">60</span>%</b> match..!
+
+            </div>
+
+            <div id = "restartBtn">
+                <input type="button" value="Restart" onclick="restartAll()">
+            </div>
+
+
+        </form>
+        </div>
+
+
+
+        
+    </body>
+</html>
